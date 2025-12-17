@@ -6,6 +6,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 
 import Uni from '@uni-helper/plugin-uni'
 import UniHelperComponents from '@uni-helper/vite-plugin-uni-components'
+import { WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
 import UniHelperLayouts from '@uni-helper/vite-plugin-uni-layouts'
 import UniHelperManifest from '@uni-helper/vite-plugin-uni-manifest'
 import UniHelperPages from '@uni-helper/vite-plugin-uni-pages'
@@ -13,6 +14,7 @@ import UniHelperPages from '@uni-helper/vite-plugin-uni-pages'
 import UniHelperPlatform from '@uni-helper/vite-plugin-uni-platform'
 import UniHelperPolyfill from 'vite-plugin-uni-polyfill'
 import UnoCSS from 'unocss/vite'
+import UniKuRoot from '@uni-ku/root'
 
 import { vitePluginConfig } from './build';
 import { transformEnvConfType } from './build/utils';
@@ -46,7 +48,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         deep: true, // 是否递归扫描子目录，
         directoryAsNamespace: false, // 是否把目录名作为命名空间前缀，true 时组件名为 目录名+组件名，
         dts: 'types/components.d.ts', // 自动生成的组件类型声明文件路径（用于 TypeScript 支持）
+        resolvers: [WotResolver()],
       }),
+      UniKuRoot(),
       Uni(),
       UnoCSS(),
       UniHelperPolyfill(),
@@ -71,7 +75,6 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       // 移除日志打印及debugger
       drop: VITE_DROP_CONSOLE ? ['console', 'debugger'] : [],
     },
-    // 处理ant-design-vue 样式文件
     css: {
       preprocessorOptions: {
         // less: {
@@ -80,8 +83,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       },
     },
     // 依赖优化 - 预构建
-    // optimizeDeps: {
-    //   include: ['vue', 'pinia', 'vue-router', '@vueuse/core'],
-    // },
+    optimizeDeps: {
+      exclude: mode === 'development' ? ['vue', 'pinia', 'vue-router'] : [],
+      include: ['@vueuse/core'],
+    },
   };
 });
