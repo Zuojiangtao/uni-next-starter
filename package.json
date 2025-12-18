@@ -97,7 +97,7 @@
     "pinia": "2.3.1",
     "pinia-plugin-persistedstate": "3.2.3",
     "vue": "3.5.13",
-    "wot-design-uni": "^1.13.0"
+    "wot-design-uni": "1.13.0"
   },
   "devDependencies": {
     "@commitlint/cli": "~20.2.0",
@@ -133,7 +133,7 @@
     "rollup-plugin-visualizer": "~6.0.5",
     "sass": "1.78.0",
     "typescript": "~5.8.0",
-    "uni-mini-router": "^0.1.6",
+    "uni-mini-router": "0.1.6",
     "unocss": "66.5.10",
     "unplugin-auto-import": "~20.3.0",
     "vite": "5.2.8",
