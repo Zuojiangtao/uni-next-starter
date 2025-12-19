@@ -1,6 +1,6 @@
-import type { SystemThemeState, ThemeMode } from '@/hooks/types/theme'
-import { defineStore } from 'pinia'
-import { themeColorOptions } from '@/hooks/types/theme'
+import type { SystemThemeState, ThemeMode } from '@/hooks/types/theme';
+import { themeColorOptions } from '@/hooks/types/theme';
+import { defineStore } from 'pinia';
 
 /**
  * 简化版系统主题状态管理
@@ -66,8 +66,7 @@ export const useThemeStore = defineStore('theme', {
      * 初始化系统主题
      */
     initSystemTheme() {
-      const systemTheme = this.getSystemTheme()
-      this.theme = systemTheme
+      this.theme = this.getSystemTheme()
       console.log('初始化系统主题:', this.theme)
     },
   },
