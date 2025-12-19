@@ -13,7 +13,7 @@ export default defineUniPages({
     navigationBarBackgroundColor: '#000000',
     navigationBarTextStyle: '@navTxtStyle',
     navigationBarTitleText: 'uni-next-starter',
-    navigationStyle: 'custom',
+    // navigationStyle: 'custom',
 
     // 下拉刷新配置
     enablePullDownRefresh: false,
