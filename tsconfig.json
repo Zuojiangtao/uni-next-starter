@@ -16,7 +16,12 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["@dcloudio/types", "@uni-helper/uni-types", "@uni-helper/vite-plugin-uni-pages"]
+    "types": [
+      "@dcloudio/types",
+      "@uni-helper/uni-types",
+      "@uni-helper/vite-plugin-uni-pages",
+      "wot-design-uni/global.d.ts"
+    ]
   },
   "vueCompilerOptions": {
     "plugins": ["@uni-helper/uni-types/volar-plugin"]

@@ -39,7 +39,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         exclude: ['**/components/**/**.*'],
         // pages 目录为 src/pages，分包目录不能配置在pages目录下！！
         // 是个数组，可以配置多个，但是不能为pages里面的目录！！
-        subPackages: [],
+        subPackages: ['src/subPages'],
         dts: 'types/uni-pages.d.ts',
       }),
       // Components 需要在 Uni 之前引入
@@ -48,12 +48,13 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         deep: true, // 是否递归扫描子目录，
         directoryAsNamespace: false, // 是否把目录名作为命名空间前缀，true 时组件名为 目录名+组件名，
         dts: 'types/components.d.ts', // 自动生成的组件类型声明文件路径（用于 TypeScript 支持）
+        dirs: ['src/components'],
         resolvers: [WotResolver()],
       }),
       UniKuRoot(),
       Uni(),
-      UnoCSS(),
       UniHelperPolyfill(),
+      UnoCSS(),
       /** ext vite plugin */
       vitePluginConfig(viteEnv),
     ],
