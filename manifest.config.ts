@@ -1,6 +1,5 @@
 import path from 'node:path'
 import process from 'node:process'
-// manifest.config.ts
 import { defineManifestConfig } from '@uni-helper/vite-plugin-uni-manifest'
 import { loadEnv } from 'vite'
 
@@ -34,6 +33,8 @@ export default defineManifestConfig({
     router: {
       base: VITE_APP_PUBLIC_BASE,
     },
+    darkmode: true,
+    themeLocation: 'theme.json',
   },
   /* 5+App特有相关 */
   'app-plus': {
