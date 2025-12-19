@@ -1,8 +1,16 @@
+<script lang="ts" setup>
+</script>
+
+<script lang="ts">
+  export default {
+    options: {
+      addGlobalClass: true,
+      virtualHost: true,
+      styleIsolation: 'shared',
+    },
+  }
+</script>
+
 <template>
-  <div>
-    <AppHeader />
-    <!-- src/pages/index.vue 和 src/pages/about.vue 内容展示 -->
-    <slot />
-    <AppFooter />
-  </div>
+  <slot />
 </template>

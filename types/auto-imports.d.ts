@@ -6,12 +6,17 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const CommonUtil: typeof import('wot-design-uni').CommonUtil
+  const ContentTypeEnum: typeof import('../src/utils/enum').ContentTypeEnum
   const EffectScope: typeof import('vue').EffectScope
+  const ResultEnum: typeof import('../src/utils/enum').ResultEnum
+  const ShowMessage: typeof import('../src/utils/enum').ShowMessage
   const acceptHMRUpdate: typeof import('pinia').acceptHMRUpdate
   const axios: typeof import('axios').default
   const computed: typeof import('vue').computed
   const createApp: typeof import('vue').createApp
   const createPinia: typeof import('pinia').createPinia
+  const createRouter: typeof import('uni-mini-router').createRouter
   const customRef: typeof import('vue').customRef
   const defineAsyncComponent: typeof import('vue').defineAsyncComponent
   const defineComponent: typeof import('vue').defineComponent
@@ -19,6 +24,7 @@ declare global {
   const effectScope: typeof import('vue').effectScope
   const getActivePinia: typeof import('pinia').getActivePinia
   const getCurrentInstance: typeof import('vue').getCurrentInstance
+  const getCurrentPath: typeof import('../src/utils/index').getCurrentPath
   const getCurrentScope: typeof import('vue').getCurrentScope
   const getCurrentWatcher: typeof import('vue').getCurrentWatcher
   const h: typeof import('vue').h
@@ -36,18 +42,40 @@ declare global {
   const markRaw: typeof import('vue').markRaw
   const nextTick: typeof import('vue').nextTick
   const onActivated: typeof import('vue').onActivated
+  const onAddToFavorites: typeof import('@dcloudio/uni-app').onAddToFavorites
+  const onBackPress: typeof import('@dcloudio/uni-app').onBackPress
   const onBeforeMount: typeof import('vue').onBeforeMount
-  const onBeforeRouteLeave: typeof import('vue-router').onBeforeRouteLeave
-  const onBeforeRouteUpdate: typeof import('vue-router').onBeforeRouteUpdate
   const onBeforeUnmount: typeof import('vue').onBeforeUnmount
   const onBeforeUpdate: typeof import('vue').onBeforeUpdate
   const onDeactivated: typeof import('vue').onDeactivated
+  const onError: typeof import('@dcloudio/uni-app').onError
   const onErrorCaptured: typeof import('vue').onErrorCaptured
+  const onHide: typeof import('@dcloudio/uni-app').onHide
+  const onLaunch: typeof import('@dcloudio/uni-app').onLaunch
+  const onLoad: typeof import('@dcloudio/uni-app').onLoad
   const onMounted: typeof import('vue').onMounted
+  const onNavigationBarButtonTap: typeof import('@dcloudio/uni-app').onNavigationBarButtonTap
+  const onNavigationBarSearchInputChanged: typeof import('@dcloudio/uni-app').onNavigationBarSearchInputChanged
+  const onNavigationBarSearchInputClicked: typeof import('@dcloudio/uni-app').onNavigationBarSearchInputClicked
+  const onNavigationBarSearchInputConfirmed: typeof import('@dcloudio/uni-app').onNavigationBarSearchInputConfirmed
+  const onNavigationBarSearchInputFocusChanged: typeof import('@dcloudio/uni-app').onNavigationBarSearchInputFocusChanged
+  const onPageNotFound: typeof import('@dcloudio/uni-app').onPageNotFound
+  const onPageScroll: typeof import('@dcloudio/uni-app').onPageScroll
+  const onPullDownRefresh: typeof import('@dcloudio/uni-app').onPullDownRefresh
+  const onReachBottom: typeof import('@dcloudio/uni-app').onReachBottom
+  const onReady: typeof import('@dcloudio/uni-app').onReady
   const onRenderTracked: typeof import('vue').onRenderTracked
   const onRenderTriggered: typeof import('vue').onRenderTriggered
+  const onResize: typeof import('@dcloudio/uni-app').onResize
   const onScopeDispose: typeof import('vue').onScopeDispose
   const onServerPrefetch: typeof import('vue').onServerPrefetch
+  const onShareAppMessage: typeof import('@dcloudio/uni-app').onShareAppMessage
+  const onShareTimeline: typeof import('@dcloudio/uni-app').onShareTimeline
+  const onShow: typeof import('@dcloudio/uni-app').onShow
+  const onTabItemTap: typeof import('@dcloudio/uni-app').onTabItemTap
+  const onThemeChange: typeof import('@dcloudio/uni-app').onThemeChange
+  const onUnhandledRejection: typeof import('@dcloudio/uni-app').onUnhandledRejection
+  const onUnload: typeof import('@dcloudio/uni-app').onUnload
   const onUnmounted: typeof import('vue').onUnmounted
   const onUpdated: typeof import('vue').onUpdated
   const onWatcherCleanup: typeof import('vue').onWatcherCleanup
@@ -61,8 +89,9 @@ declare global {
   const shallowReactive: typeof import('vue').shallowReactive
   const shallowReadonly: typeof import('vue').shallowReadonly
   const shallowRef: typeof import('vue').shallowRef
+  const store: typeof import('../src/store/index').default
   const storeToRefs: typeof import('pinia').storeToRefs
-  const themeColorOptions: typeof import('../src/hooks/useManualTheme').themeColorOptions
+  const themeColorOptions: typeof import('../src/hooks/useMunalTheme').themeColorOptions
   const toRaw: typeof import('vue').toRaw
   const toRef: typeof import('vue').toRef
   const toRefs: typeof import('vue').toRefs
@@ -72,24 +101,26 @@ declare global {
   const useAttrs: typeof import('vue').useAttrs
   const useCssModule: typeof import('vue').useCssModule
   const useCssVars: typeof import('vue').useCssVars
-  const useDark: typeof import('@vueuse/core')['useDark']
   const useDebounceFn: typeof import('@vueuse/core').useDebounceFn
+  const useGlobalLoading: typeof import('../src/hooks/useGlobalLoading').useGlobalLoading
   const useGlobalMessage: typeof import('../src/hooks/useGlobalMessage').useGlobalMessage
   const useGlobalToast: typeof import('../src/hooks/useGlobalToast').useGlobalToast
   const useId: typeof import('vue').useId
-  const useLink: typeof import('vue-router').useLink
-  const useManualTheme: typeof import('../src/hooks/useManualTheme').useManualTheme
+  const useManualTheme: typeof import('../src/hooks/useMunalTheme').useManualTheme
+  const useManualThemeStore: typeof import('../src/store/manualThemeStore').useManualThemeStore
+  const useMessage: typeof import('wot-design-uni').useMessage
   const useModel: typeof import('vue').useModel
-  const useMouse: typeof import('@vueuse/core').useMouse
-  const useMyFetch: typeof import('@vueuse/core')['useFetch']
-  const usePreferredDark: typeof import('@vueuse/core')['usePreferredDark']
-  const useQuery: typeof import('../src/hooks/useQuery').useQuery
-  const useRoute: typeof import('vue-router').useRoute
-  const useRouter: typeof import('vue-router').useRouter
+  const useNotify: typeof import('wot-design-uni').useNotify
+  const usePagination: typeof import('alova/client').usePagination
+  const useRequest: typeof import('alova/client').useRequest
+  const useRoute: typeof import('uni-mini-router').useRoute
+  const useRouter: typeof import('uni-mini-router').useRouter
   const useSlots: typeof import('vue').useSlots
   const useTabbar: typeof import('../src/hooks/useTabbar').useTabbar
   const useTemplateRef: typeof import('vue').useTemplateRef
-  const useTitle: typeof import('@vueuse/core').useTitle
+  const useTheme: typeof import('../src/hooks/useTheme').useTheme
+  const useThemeStore: typeof import('../src/store/themeStore').useThemeStore
+  const useToast: typeof import('wot-design-uni').useToast
   const watch: typeof import('vue').watch
   const watchEffect: typeof import('vue').watchEffect
   const watchPostEffect: typeof import('vue').watchPostEffect
@@ -104,11 +135,14 @@ declare global {
   export type { GlobalMessageOptions } from '../src/hooks/useGlobalMessage'
   import('../src/hooks/useGlobalMessage')
   // @ts-ignore
-  export type { ThemeColorOption, ThemeMode } from '../src/hooks/useManualTheme'
-  import('../src/hooks/useManualTheme')
+  export type { ThemeColorOption, ThemeMode } from '../src/hooks/useMunalTheme'
+  import('../src/hooks/useMunalTheme')
   // @ts-ignore
   export type { TabbarItem } from '../src/hooks/useTabbar'
   import('../src/hooks/useTabbar')
+  // @ts-ignore
+  export type { ResultEnum, ContentTypeEnum } from '../src/utils/enum'
+  import('../src/utils/enum')
 }
 
 // for vue template auto import
@@ -116,12 +150,16 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
+    readonly CommonUtil: UnwrapRef<typeof import('wot-design-uni')['CommonUtil']>
+    readonly ContentTypeEnum: UnwrapRef<typeof import('../src/utils/enum')['ContentTypeEnum']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly ResultEnum: UnwrapRef<typeof import('../src/utils/enum')['ResultEnum']>
+    readonly ShowMessage: UnwrapRef<typeof import('../src/utils/enum')['ShowMessage']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
-    readonly axios: UnwrapRef<typeof import('axios')['default']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
     readonly createPinia: UnwrapRef<typeof import('pinia')['createPinia']>
+    readonly createRouter: UnwrapRef<typeof import('uni-mini-router')['createRouter']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
@@ -129,6 +167,7 @@ declare module 'vue' {
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
+    readonly getCurrentPath: UnwrapRef<typeof import('../src/utils/index')['getCurrentPath']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getCurrentWatcher: UnwrapRef<typeof import('vue')['getCurrentWatcher']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
@@ -146,18 +185,40 @@ declare module 'vue' {
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
+    readonly onAddToFavorites: UnwrapRef<typeof import('@dcloudio/uni-app')['onAddToFavorites']>
+    readonly onBackPress: UnwrapRef<typeof import('@dcloudio/uni-app')['onBackPress']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>
-    readonly onBeforeRouteLeave: UnwrapRef<typeof import('vue-router')['onBeforeRouteLeave']>
-    readonly onBeforeRouteUpdate: UnwrapRef<typeof import('vue-router')['onBeforeRouteUpdate']>
     readonly onBeforeUnmount: UnwrapRef<typeof import('vue')['onBeforeUnmount']>
     readonly onBeforeUpdate: UnwrapRef<typeof import('vue')['onBeforeUpdate']>
     readonly onDeactivated: UnwrapRef<typeof import('vue')['onDeactivated']>
+    readonly onError: UnwrapRef<typeof import('@dcloudio/uni-app')['onError']>
     readonly onErrorCaptured: UnwrapRef<typeof import('vue')['onErrorCaptured']>
+    readonly onHide: UnwrapRef<typeof import('@dcloudio/uni-app')['onHide']>
+    readonly onLaunch: UnwrapRef<typeof import('@dcloudio/uni-app')['onLaunch']>
+    readonly onLoad: UnwrapRef<typeof import('@dcloudio/uni-app')['onLoad']>
     readonly onMounted: UnwrapRef<typeof import('vue')['onMounted']>
+    readonly onNavigationBarButtonTap: UnwrapRef<typeof import('@dcloudio/uni-app')['onNavigationBarButtonTap']>
+    readonly onNavigationBarSearchInputChanged: UnwrapRef<typeof import('@dcloudio/uni-app')['onNavigationBarSearchInputChanged']>
+    readonly onNavigationBarSearchInputClicked: UnwrapRef<typeof import('@dcloudio/uni-app')['onNavigationBarSearchInputClicked']>
+    readonly onNavigationBarSearchInputConfirmed: UnwrapRef<typeof import('@dcloudio/uni-app')['onNavigationBarSearchInputConfirmed']>
+    readonly onNavigationBarSearchInputFocusChanged: UnwrapRef<typeof import('@dcloudio/uni-app')['onNavigationBarSearchInputFocusChanged']>
+    readonly onPageNotFound: UnwrapRef<typeof import('@dcloudio/uni-app')['onPageNotFound']>
+    readonly onPageScroll: UnwrapRef<typeof import('@dcloudio/uni-app')['onPageScroll']>
+    readonly onPullDownRefresh: UnwrapRef<typeof import('@dcloudio/uni-app')['onPullDownRefresh']>
+    readonly onReachBottom: UnwrapRef<typeof import('@dcloudio/uni-app')['onReachBottom']>
+    readonly onReady: UnwrapRef<typeof import('@dcloudio/uni-app')['onReady']>
     readonly onRenderTracked: UnwrapRef<typeof import('vue')['onRenderTracked']>
     readonly onRenderTriggered: UnwrapRef<typeof import('vue')['onRenderTriggered']>
+    readonly onResize: UnwrapRef<typeof import('@dcloudio/uni-app')['onResize']>
     readonly onScopeDispose: UnwrapRef<typeof import('vue')['onScopeDispose']>
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
+    readonly onShareAppMessage: UnwrapRef<typeof import('@dcloudio/uni-app')['onShareAppMessage']>
+    readonly onShareTimeline: UnwrapRef<typeof import('@dcloudio/uni-app')['onShareTimeline']>
+    readonly onShow: UnwrapRef<typeof import('@dcloudio/uni-app')['onShow']>
+    readonly onTabItemTap: UnwrapRef<typeof import('@dcloudio/uni-app')['onTabItemTap']>
+    readonly onThemeChange: UnwrapRef<typeof import('@dcloudio/uni-app')['onThemeChange']>
+    readonly onUnhandledRejection: UnwrapRef<typeof import('@dcloudio/uni-app')['onUnhandledRejection']>
+    readonly onUnload: UnwrapRef<typeof import('@dcloudio/uni-app')['onUnload']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
     readonly onWatcherCleanup: UnwrapRef<typeof import('vue')['onWatcherCleanup']>
@@ -171,8 +232,9 @@ declare module 'vue' {
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
+    readonly store: UnwrapRef<typeof import('../src/store/index')['default']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
-    readonly themeColorOptions: UnwrapRef<typeof import('../src/hooks/useManualTheme')['themeColorOptions']>
+    readonly themeColorOptions: UnwrapRef<typeof import('../src/hooks/useMunalTheme')['themeColorOptions']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
@@ -183,20 +245,25 @@ declare module 'vue' {
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useDebounceFn: UnwrapRef<typeof import('@vueuse/core')['useDebounceFn']>
+    readonly useGlobalLoading: UnwrapRef<typeof import('../src/hooks/useGlobalLoading')['useGlobalLoading']>
     readonly useGlobalMessage: UnwrapRef<typeof import('../src/hooks/useGlobalMessage')['useGlobalMessage']>
     readonly useGlobalToast: UnwrapRef<typeof import('../src/hooks/useGlobalToast')['useGlobalToast']>
     readonly useId: UnwrapRef<typeof import('vue')['useId']>
-    readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
-    readonly useManualTheme: UnwrapRef<typeof import('../src/hooks/useManualTheme')['useManualTheme']>
+    readonly useManualTheme: UnwrapRef<typeof import('../src/hooks/useMunalTheme')['useManualTheme']>
+    readonly useManualThemeStore: UnwrapRef<typeof import('../src/store/manualThemeStore')['useManualThemeStore']>
+    readonly useMessage: UnwrapRef<typeof import('wot-design-uni')['useMessage']>
     readonly useModel: UnwrapRef<typeof import('vue')['useModel']>
-    readonly useMouse: UnwrapRef<typeof import('@vueuse/core')['useMouse']>
-    readonly useQuery: UnwrapRef<typeof import('../src/hooks/useQuery')['useQuery']>
-    readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
-    readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
+    readonly useNotify: UnwrapRef<typeof import('wot-design-uni')['useNotify']>
+    readonly usePagination: UnwrapRef<typeof import('alova/client')['usePagination']>
+    readonly useRequest: UnwrapRef<typeof import('alova/client')['useRequest']>
+    readonly useRoute: UnwrapRef<typeof import('uni-mini-router')['useRoute']>
+    readonly useRouter: UnwrapRef<typeof import('uni-mini-router')['useRouter']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useTabbar: UnwrapRef<typeof import('../src/hooks/useTabbar')['useTabbar']>
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
-    readonly useTitle: UnwrapRef<typeof import('@vueuse/core')['useTitle']>
+    readonly useTheme: UnwrapRef<typeof import('../src/hooks/useTheme')['useTheme']>
+    readonly useThemeStore: UnwrapRef<typeof import('../src/store/themeStore')['useThemeStore']>
+    readonly useToast: UnwrapRef<typeof import('wot-design-uni')['useToast']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('vue')['watchPostEffect']>

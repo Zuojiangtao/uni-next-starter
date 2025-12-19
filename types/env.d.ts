@@ -7,6 +7,8 @@ interface ImportMetaEnv {
   /** 环境变量 */
   readonly VITE_WX_APPID: string;
   /** 环境变量 */
+  readonly VITE_APP_PUBLIC_BASE: string;
+  /** 环境变量 */
   readonly VITE_APP_NODE_ENV: string;
   /** 环境变量 */
   readonly VITE_PORT: string;
