@@ -6,6 +6,7 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const API_DOMAINS: typeof import('../src/utils/httpRequest').API_DOMAINS
   const CommonUtil: typeof import('wot-design-uni').CommonUtil
   const ContentTypeEnum: typeof import('../src/utils/enum').ContentTypeEnum
   const EffectScope: typeof import('vue').EffectScope
@@ -22,12 +23,14 @@ declare global {
   const defineComponent: typeof import('vue').defineComponent
   const defineStore: typeof import('pinia').defineStore
   const effectScope: typeof import('vue').effectScope
+  const foo: typeof import('../src/api/foo').foo
   const getActivePinia: typeof import('pinia').getActivePinia
   const getCurrentInstance: typeof import('vue').getCurrentInstance
   const getCurrentPath: typeof import('../src/utils/index').getCurrentPath
   const getCurrentScope: typeof import('vue').getCurrentScope
   const getCurrentWatcher: typeof import('vue').getCurrentWatcher
   const h: typeof import('vue').h
+  const httpRequest: typeof import('../src/utils/httpRequest').httpRequest
   const inject: typeof import('vue').inject
   const isProxy: typeof import('vue').isProxy
   const isReactive: typeof import('vue').isReactive
@@ -143,6 +146,9 @@ declare global {
   // @ts-ignore
   export type { ResultEnum, ContentTypeEnum } from '../src/utils/enum'
   import('../src/utils/enum')
+  // @ts-ignore
+  export type { Foo } from '../src/api/foo'
+  import('../src/api/foo')
 }
 
 // for vue template auto import
@@ -150,6 +156,7 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
+    readonly API_DOMAINS: UnwrapRef<typeof import('../src/utils/httpRequest')['API_DOMAINS']>
     readonly CommonUtil: UnwrapRef<typeof import('wot-design-uni')['CommonUtil']>
     readonly ContentTypeEnum: UnwrapRef<typeof import('../src/utils/enum')['ContentTypeEnum']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
@@ -165,12 +172,14 @@ declare module 'vue' {
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
+    readonly foo: UnwrapRef<typeof import('../src/api/foo')['foo']>
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentPath: UnwrapRef<typeof import('../src/utils/index')['getCurrentPath']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getCurrentWatcher: UnwrapRef<typeof import('vue')['getCurrentWatcher']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly httpRequest: UnwrapRef<typeof import('../src/utils/httpRequest')['httpRequest']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
