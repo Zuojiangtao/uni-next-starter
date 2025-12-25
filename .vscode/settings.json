@@ -61,7 +61,7 @@
     "*.env": "$(capture).env.*",
     "package.json": "pnpm-lock.yaml,yarn.lock,package-lock.json,CHANGELOG*,.npmrc",
     "*.eslintignore": "eslint.config.mjs,.gitattributes,.gitignore,commitlint.config.cjs,tsconfig.json",
-    "vite.config.ts": "manifest.config.ts,page.config.ts,unh.config.ts,uno.config.ts"
+    "vite.config.ts": "manifest.config.ts,pages.config.ts,unh.config.ts,uno.config.ts"
   },
   "terminal.integrated.scrollback": 10000
 }
